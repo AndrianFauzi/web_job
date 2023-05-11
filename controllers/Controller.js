@@ -45,11 +45,15 @@ class Controller {
       if (full_time) {
         url += `&full_time=${full_time}`;
       }
+      if (page) {
+        url += `&page=${page}`;
+      } else {
+        url += `&page=1`;
+      }
       const response = await fetch(url);
       const data = await response.json();
       res.send(data);
     } catch (error) {
-      console.log(error, "err");
       res.status(500).json(error);
     }
   }
